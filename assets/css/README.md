@@ -1,0 +1,1 @@
+Pasta onde são gerados os arquivos CSS, a partir do LESS. O arquivo /assets/less/style.less é o principal arquivo, que deve ser transformado no style.min.css
