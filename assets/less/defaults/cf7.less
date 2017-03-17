@@ -1,16 +1,66 @@
 .wpcf7-form {
 	input[type="text"],
 	input[type="email"],
+	input[type="tel"],
 	textarea {
 		border-radius: 5px;
 		border-width: 0;
 		background-color:  rgba(255, 255, 255, 0.33);
+		color: #FFF;
+		
+		.placeholder({
+			color: #FFF;
+			font-weight: bold;
+			font-size: 11px;
+			text-transform: uppercase;
+		})
 	}
-	
+
 	input[type="submit"],
 	input[type="button"] {
 		background-color: #fafafa;
 		border-width: 0;
 		color: #1393be;
 	}
+	
+	.wpcf7-list-item {
+		display: block;
+		font-size: 12px;
+		
+		label {
+			margin-bottom: 0;
+		}
+	}
+	
+	label {
+		margin-bottom: 8px;
+	}
+	
+
+	.btn-group {
+		@media (min-width: @small-breakpoint) {
+			text-align: right;
+		}
+		
+		.btn {
+			text-align: center;
+			width: 100%;
+			margin-bottom: 5px;
+
+			&:extend(.wpcf7-form .btn-group .wpcf7-submit);
+		}
+		.wpcf7-submit {
+			@media (min-width: @small-breakpoint) {
+				width: 300px;
+			}
+		}
+		
+		.ajax-loader {
+			@media (min-width: @small-breakpoint) {
+				float: left;
+			}
+		}
+	}
+	
+	
 }
