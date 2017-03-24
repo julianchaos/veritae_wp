@@ -2,6 +2,7 @@ header {
 	color: #333;
 	
 	.un-logo {
+		border-right-width: 0 !important;
 		padding: 0;
 		padding-right: 10px !important;
 		padding-left: 10px !important;
@@ -9,6 +10,12 @@ header {
 		@media (min-width: 375px) {
 			padding-left: 15px !important;
 			padding-right: 15px !important;
+		}
+		@media (min-width: @small-breakpoint) {
+			margin-left: 20px;
+		}
+		@media (min-width: @large-breakpoint) {
+			margin-left: 40px;
 		}
 		
 		a {
