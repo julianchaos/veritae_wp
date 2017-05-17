@@ -1,37 +1,61 @@
 <?php
 
-function cptui_register_my_cpts() {
+function cptui_register_my_taxes() {
 
 	/**
-	 * Post Type: Lex.
+	 * Taxonomy: Áreas de conhecimento.
 	 */
 
 	$labels = array(
-		"name" => __( 'Lex', 'Veritae' ),
-		"singular_name" => __( 'Lex', 'Veritae' ),
+		"name" => __( 'Áreas de conhecimento', 'Veritae' ),
+		"singular_name" => __( 'Área de conhecimento', 'Veritae' ),
 	);
 
 	$args = array(
-		"label" => __( 'Lex', 'Veritae' ),
+		"label" => __( 'Áreas de conhecimento', 'Veritae' ),
 		"labels" => $labels,
-		"description" => "",
 		"public" => true,
-		"publicly_queryable" => true,
+		"hierarchical" => false,
+		"label" => "Áreas de conhecimento",
 		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'area_conhecimento', 'with_front' => true, ),
+		"show_admin_column" => false,
 		"show_in_rest" => false,
 		"rest_base" => "",
-		"has_archive" => false,
-		"show_in_menu" => true,
-		"exclude_from_search" => false,
-		"capability_type" => "post",
-		"map_meta_cap" => true,
-		"hierarchical" => false,
-		"rewrite" => array( "slug" => "lex", "with_front" => true ),
-		"query_var" => true,
-		"supports" => array( "title", "editor", "thumbnail" ),
+		"show_in_quick_edit" => false,
+	);
+	register_taxonomy( "area_conhecimento", array( "post" ), $args );
+
+	/**
+	 * Taxonomy: Tipos de ato.
+	 */
+
+	$labels = array(
+		"name" => __( 'Tipos de ato', 'Veritae' ),
+		"singular_name" => __( 'Tipo do ato', 'Veritae' ),
 	);
 
-	register_post_type( "lex", $args );
+	$args = array(
+		"label" => __( 'Tipos de ato', 'Veritae' ),
+		"labels" => $labels,
+		"public" => true,
+		"hierarchical" => false,
+		"label" => "Tipos de ato",
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'tipo_ato', 'with_front' => true, ),
+		"show_admin_column" => false,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"show_in_quick_edit" => false,
+	);
+	register_taxonomy( "tipo_ato", array( "post" ), $args );
 }
 
-add_action( 'init', 'cptui_register_my_cpts' );
+add_action( 'init', 'cptui_register_my_taxes' );
+

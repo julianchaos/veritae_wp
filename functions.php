@@ -11,3 +11,11 @@ function veritae_theme_enqueue_styles()
 	wp_enqueue_style('veritae-style', get_stylesheet_directory_uri() . '/assets/css/style.min.css');
 }
 add_action('wp_enqueue_scripts', 'veritae_theme_enqueue_styles');
+
+function my_remove_meta_boxes() {
+	remove_meta_box( 'categorydiv', 'post', 'normal' );
+	remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal' );
+	remove_meta_box( 'tagsdiv-area_conhecimento', 'post', 'normal' );
+	remove_meta_box( 'tagsdiv-tipo_ato', 'post', 'normal' );
+}
+add_action( 'admin_menu', 'my_remove_meta_boxes' );
