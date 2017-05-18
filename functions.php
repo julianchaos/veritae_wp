@@ -1,6 +1,6 @@
 <?php require_once 'assets/inc/advanced-custom-fields/init.php' ?>
-<?php require_once 'assets/inc/cpt.php' ?>
-<?php require_once 'assets/inc/cpf.php' ?>
+<?php // require_once 'assets/inc/cpt.php' ?>
+<?php // require_once 'assets/inc/cpf.php' ?>
 <?php
 
 function veritae_theme_enqueue_styles()
