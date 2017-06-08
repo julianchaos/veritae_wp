@@ -15,7 +15,7 @@ if(function_exists("register_field_group"))
 				'taxonomy' => 'area_conhecimento',
 				'field_type' => 'checkbox',
 				'allow_null' => 0,
-				'load_save_terms' => 0,
+				'load_save_terms' => 1,
 				'return_format' => 'id',
 				'multiple' => 0,
 			),
@@ -48,7 +48,7 @@ if(function_exists("register_field_group"))
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'lex',
+					'value' => 'post',
 					'order_no' => 0,
 					'group_no' => 1,
 				),
@@ -103,9 +103,9 @@ if(function_exists("register_field_group"))
 				'name' => 'tipo_ato',
 				'type' => 'taxonomy',
 				'taxonomy' => 'tipo_ato',
-				'field_type' => 'checkbox',
+				'field_type' => 'select',
 				'allow_null' => 0,
-				'load_save_terms' => 0,
+				'load_save_terms' => 1,
 				'return_format' => 'id',
 				'multiple' => 0,
 			),
@@ -146,12 +146,62 @@ if(function_exists("register_field_group"))
 				'maxlength' => '',
 			),
 			array (
+				'key' => 'field_593054f32aeeb',
+				'label' => 'Tipo do Arquivo',
+				'name' => 'tipo_arquivo',
+				'type' => 'radio',
+				'required' => 1,
+				'choices' => array (
+					'local' => 'Arquivo Local',
+					'remoto' => 'Arquivo Remoto',
+				),
+				'other_choice' => 0,
+				'save_other_choice' => 0,
+				'default_value' => 'local',
+				'layout' => 'horizontal',
+			),
+			array (
 				'key' => 'field_591c6ccd38bc1',
 				'label' => 'Arquivo',
 				'name' => 'arquivo',
 				'type' => 'file',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_593054f32aeeb',
+							'operator' => '==',
+							'value' => 'local',
+						),
+					),
+					'allorany' => 'all',
+				),
 				'save_format' => 'object',
 				'library' => 'uploadedTo',
+			),
+			array (
+				'key' => 'field_593054cb2aeea',
+				'label' => 'Arquivo URL',
+				'name' => 'arquivo_url',
+				'type' => 'text',
+				'instructions' => 'Insira a URL para acessar o arquivo.',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_593054f32aeeb',
+							'operator' => '==',
+							'value' => 'remoto',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'html',
+				'maxlength' => '',
 			),
 			array (
 				'key' => 'field_591c6cf338bc2',
@@ -170,9 +220,9 @@ if(function_exists("register_field_group"))
 				'label' => 'Data da fonte',
 				'name' => 'data_fonte',
 				'type' => 'date_picker',
-				'date_format' => 'yymmdd',
+				'date_format' => 'yy-mm-dd',
 				'display_format' => 'dd/mm/yy',
-				'first_day' => 1,
+				'first_day' => 0,
 			),
 			array (
 				'key' => 'field_590b56bdc3e9f',
@@ -216,3 +266,4 @@ if(function_exists("register_field_group"))
 		'menu_order' => 0,
 	));
 }
+
