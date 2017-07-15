@@ -29,6 +29,21 @@ if (have_posts()) {
 			$format = 'slider';
 		}
 	}
+	
+	/* Custom Fields */
+	$tipo_postagem = get_post_meta($post->ID, 'tipo_postagem', true);
+	$titulo_alternativo = get_post_meta($post->ID, 'titulo_alternativo', true);
+	$ato = array(
+		'tipo' => get_post_meta($post->ID, 'tipo_ato', true),
+		'numero' => get_post_meta($post->ID, 'numero_ato', true),
+		'informacoes' => get_post_meta($post->ID, 'informações_ato', true),
+	);
+	$ementa = get_post_meta($post->ID, 'ementa', true);
+	$fonte = array(
+		'titulo' => get_post_meta($post->ID, 'fonte', true),
+		'data' => date('d/m/Y', strtotime(get_post_meta($post->ID, 'data_fonte', true))),
+		);
+	$autor_artigo = get_post_meta($post->ID, 'autor_artigo', true)
 	?>
 	<div class="un-page-wrap">
 		<div class="un-page-head wrap-full d-flex" style="<?php un_echo($head_style, 'attr'); ?>">
@@ -36,10 +51,7 @@ if (have_posts()) {
 			<div class="wrap-boxed text-c">
 
 				<div class="un-page-head-title un-title-l fade-in-down appear"><?php un_echo($head_data['title'], 'html'); ?></div>
-
-				<?php if ($head_data['subtitle']) { ?>
-					<div class="un-page-head-exc fade-in-up appear"><?php un_echo($head_data['subtitle'], 'html'); ?></div>
-				<?php } ?>
+				<div class="un-page-head-exc fade-in-up appear"><?php echo $tipo_postagem ?></div>
 
 	<?php if ($head_data['arrow']) { ?>
 					<i class="un-page-head-ico fa-icon-angle-down go-to" data-goto="#un-page-content"></i>
@@ -106,7 +118,28 @@ if (have_posts()) {
 
 	                    <div class="un-page-div"></div>
 
-	                    <article><?php the_content(); ?></article>
+	                    <article>
+							<h5 class="ato-titulo" style="color: #222;">Ato</h5>
+							<p class="ato-content">
+								<strong>Tipo:</strong> <?php echo $ato['tipo'] ?><br />
+								<strong>Número:</strong> <?php echo $ato['numero'] ?><br />
+								<strong>Informações:</strong> <?php echo $ato['informacoes'] ?><br />
+							</p>
+							<p>
+								<strong>Ementa:</strong> <?php echo $ementa ?>
+							</p>
+							<h5 class="titulo-alternativo" style='color: #222'><?php echo $titulo_alternativo ?></h5>
+							<?php the_content(); ?>
+							<p>
+								<strong>Fonte: </strong> <?php echo $fonte['titulo'] . ' em ' . $fonte['data'] ?><br />
+								<strong>Autor:</strong> <?php echo $autor_artigo ?>
+							</p>
+							<p>
+								<div class="btn un-btn-12">
+									<a target="_self" href="javascript: void(0)">Download <?php echo $tipo_postagem ?></a>
+								</div>
+							</p>
+						</article>
 
 						<?php
 						// Post Tags
@@ -187,8 +220,8 @@ if (have_posts()) {
 
 	<?php } // end of if have post. ?>
 
-	<?php
-	get_footer();
+<?php
+get_footer();
 
 
 	
