@@ -43,7 +43,13 @@ if (have_posts()) {
 		'titulo' => get_post_meta($post->ID, 'fonte', true),
 		'data' => date('d/m/Y', strtotime(get_post_meta($post->ID, 'data_fonte', true))),
 		);
-	$autor_artigo = get_post_meta($post->ID, 'autor_artigo', true)
+	$autor_artigo = get_post_meta($post->ID, 'autor_artigo', true);
+	
+	$tipo_arquivo = get_post_meta($post->ID, 'tipo_arquivo', true);
+	$arquivo_url = 'javascript: window.print()';
+	if($tipo_arquivo === 'remoto') {
+		$arquivo_url = get_post_meta($post->ID, 'arquivo_url', true);
+	}
 	?>
 	<div class="un-page-wrap">
 		<div class="un-page-head wrap-full d-flex" style="<?php un_echo($head_style, 'attr'); ?>">
@@ -136,7 +142,8 @@ if (have_posts()) {
 							</p>
 							<p>
 								<div class="btn un-btn-12">
-									<a target="_self" href="javascript: void(0)">Download <?php echo $tipo_postagem ?></a>
+									<a target="_self" href="<?php echo $arquivo_url ?>" 
+									   <?php if($tipo_arquivo === 'remoto') { echo 'download';} ?>>Download PDF</a>
 								</div>
 							</p>
 						</article>
