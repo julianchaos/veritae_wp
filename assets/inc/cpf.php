@@ -16,7 +16,7 @@ if(function_exists("register_field_group"))
 				'field_type' => 'checkbox',
 				'allow_null' => 0,
 				'load_save_terms' => 1,
-				'return_format' => 'id',
+				'return_format' => 'object',
 				'multiple' => 0,
 			),
 			array (
