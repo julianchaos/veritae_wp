@@ -2,76 +2,16 @@
 
 if(function_exists("register_field_group"))
 {
-	register_field_group(array (
-		'id' => 'acf_configuracoes-de-postagem',
-		'title' => 'Configurações de postagem',
-		'fields' => array (
-			array (
-				'key' => 'field_590b76114f9b8',
-				'label' => 'Área de Conhecimento',
-				'name' => 'area_conhecimento',
-				'type' => 'taxonomy',
-				'required' => 1,
-				'taxonomy' => 'area_conhecimento',
-				'field_type' => 'checkbox',
-				'allow_null' => 0,
-				'load_save_terms' => 1,
-				'return_format' => 'object',
-				'multiple' => 0,
-			),
-			array (
-				'key' => 'field_590b762e4f9b9',
-				'label' => 'Nível de Acesso',
-				'name' => 'nivel_acesso',
-				'type' => 'select',
-				'choices' => array (
-					'assinante' => 'Assinante',
-					'publico' => 'Público',
-					'' => '',
-				),
-				'default_value' => 'assinante',
-				'allow_null' => 0,
-				'multiple' => 0,
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-			),
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-					'order_no' => 0,
-					'group_no' => 1,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'side',
-			'layout' => 'default',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
-	));
-	register_field_group(array (
-		'id' => 'acf_veritae',
-		'title' => 'Veritae',
-		'fields' => array (
+	register_field_group(array(
+		'id' => 'acf_veritae_obrigatorios',
+		'title' => 'Obrigatórios',
+		'fields' => array(
 			array (
 				'key' => 'field_590b55d4c3e9e',
 				'label' => 'Tipo da postagem',
 				'name' => 'tipo_postagem',
 				'type' => 'select',
-				'required' => 1,
+				'required' => 0,
 				'choices' => array (
 					'lex' => 'Lex',
 					'noticia' => 'Notícia',
@@ -85,11 +25,97 @@ if(function_exists("register_field_group"))
 				'multiple' => 0,
 			),
 			array (
+				'key' => 'field_590b76114f9b8',
+				'label' => 'Área de Conhecimento',
+				'name' => 'area_conhecimento',
+				'type' => 'taxonomy',
+				'required' => 0,
+				'taxonomy' => 'area_conhecimento',
+				'field_type' => 'checkbox',
+				'allow_null' => 0,
+				'load_save_terms' => 1,
+				'return_format' => 'object',
+				'multiple' => 0,
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'post_type',
+					'operator' => '==',
+					'value' => 'post',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'acf_after_title',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	
+//	register_field_group(array (
+//		'id' => 'acf_configuracoes-de-postagem',
+//		'title' => 'Configurações de postagem',
+//		'fields' => array (
+//			array (
+//				'key' => 'field_590b762e4f9b9',
+//				'label' => 'Nível de Acesso',
+//				'name' => 'nivel_acesso',
+//				'type' => 'select',
+//				'choices' => array (
+//					'assinante' => 'Assinante',
+//					'publico' => 'Público',
+//					'' => '',
+//				),
+//				'default_value' => 'assinante',
+//				'allow_null' => 0,
+//				'multiple' => 0,
+//			),
+//		),
+//		'location' => array (
+//			array (
+//				array (
+//					'param' => 'post_type',
+//					'operator' => '==',
+//					'value' => 'post',
+//					'order_no' => 0,
+//					'group_no' => 0,
+//				),
+//			),
+//			array (
+//				array (
+//					'param' => 'post_type',
+//					'operator' => '==',
+//					'value' => 'post',
+//					'order_no' => 0,
+//					'group_no' => 1,
+//				),
+//			),
+//		),
+//		'options' => array (
+//			'position' => 'side',
+//			'layout' => 'default',
+//			'hide_on_screen' => array (
+//			),
+//		),
+//		'menu_order' => 1,
+//	));
+	register_field_group(array (
+		'id' => 'acf_veritae',
+		'title' => 'Veritae',
+		'fields' => array (
+			
+			array (
 				'key' => 'field_591c6b7e2a5d7',
 				'label' => 'Titulo Alternativo',
 				'name' => 'titulo_alternativo',
 				'type' => 'text',
-				'required' => 1,
+				'required' => 0,
 				'default_value' => '',
 				'placeholder' => '',
 				'prepend' => '',
@@ -150,7 +176,7 @@ if(function_exists("register_field_group"))
 				'label' => 'Tipo do Arquivo',
 				'name' => 'tipo_arquivo',
 				'type' => 'radio',
-				'required' => 1,
+				'required' => 0,
 				'choices' => array (
 					'local' => 'Arquivo Local',
 					'remoto' => 'Arquivo Remoto',
@@ -184,7 +210,7 @@ if(function_exists("register_field_group"))
 				'label' => 'Arquivo URL',
 				'name' => 'arquivo_url',
 				'type' => 'text',
-				'required' => 1,
+				'required' => 0,
 				'instructions' => 'Insira a URL para acessar o arquivo.',
 				'conditional_logic' => array (
 					'status' => 1,
@@ -231,7 +257,7 @@ if(function_exists("register_field_group"))
 				'name' => 'autor_artigo',
 				'type' => 'text',
 				'instructions' => 'Autor do artigo',
-				'required' => 1,
+				'required' => 0,
 				'default_value' => '',
 				'placeholder' => '',
 				'prepend' => '',

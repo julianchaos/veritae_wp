@@ -34,7 +34,7 @@ if (have_posts()) {
 	$tipo_postagem = get_post_meta($post->ID, 'tipo_postagem', true);
 	$titulo_alternativo = get_post_meta($post->ID, 'titulo_alternativo', true);
 	$ato = array(
-		'tipo' => get_post_meta($post->ID, 'tipo_ato', true),
+		'tipo' => get_term_by('id', get_post_meta($post->ID, 'tipo_ato', true), 'tipo_ato')->name,
 		'numero' => get_post_meta($post->ID, 'numero_ato', true),
 		'informacoes' => get_post_meta($post->ID, 'informações_ato', true),
 	);
