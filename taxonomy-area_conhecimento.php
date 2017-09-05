@@ -178,7 +178,7 @@ get_header(); ?>
 	                                    $date = get_the_date( 'd M Y' );
 	                                    $author = '<a href="'.get_author_posts_url( get_the_author_meta('ID') ).'">'.get_the_author().'</a>';
 										
-										$area_conhecimento = get_field('area_conhecimento');
+										$area_conhecimento = wp_get_post_terms($post->ID, 'area_conhecimento');
 										$area_conhecimento_links = array();
 										if(
 												is_array($area_conhecimento) && 
