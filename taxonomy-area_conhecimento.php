@@ -273,7 +273,7 @@ get_header(); ?>
 
             </div>
 
-            <?php un_echo( un_full_pagination(), 'html' ); ?>
+            <?php un_echo( un_full_pagination(null, 5), 'html' ); ?>
 
         </div>
 
