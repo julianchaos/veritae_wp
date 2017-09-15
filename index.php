@@ -46,7 +46,9 @@ get_header(); ?>
         <div class="<?php un_echo( $wrap_class, 'attr' ); ?>" id="un-page-content">
 
             <div class="un-page-loop row gutter-30">
-
+				
+				<?php get_template_part('template/filter', 'tipo') ?>
+				
                 <?php if( $layout_data['layout'] == 'side_L' ){ ?>
 
                 <div class="col-xl-3 col-s-12 un-page-side-left un-page-side">

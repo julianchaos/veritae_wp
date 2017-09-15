@@ -70,10 +70,11 @@ get_header(); ?>
             </div>
 
         </div>
-
         <div class="<?php un_echo( $wrap_class, 'attr' ); ?>" id="un-page-content">
 
             <div class="un-page-loop row gutter-30">
+				
+				<?php get_template_part('template/filter', 'tipo') ?>
 
                 <?php if( $layout_data['layout'] == 'side_L' ){ ?>
 

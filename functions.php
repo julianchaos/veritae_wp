@@ -12,13 +12,33 @@ function veritae_theme_enqueue_styles()
 }
 add_action('wp_enqueue_scripts', 'veritae_theme_enqueue_styles');
 
-function my_remove_meta_boxes() {
+function veritae_theme_enqueue_scripts() {
+	wp_enqueue_script('veritae-main', get_stylesheet_directory_uri() . '/assets/js/main.js', array('jquery'));
+} 
+add_action('wp_enqueue_scripts', 'veritae_theme_enqueue_scripts');
+
+function veritae_theme_remove_meta_boxes() {
 	remove_meta_box( 'tagsdiv-area_conhecimento', 'post', 'normal' );
 	remove_meta_box( 'tagsdiv-tipo_ato', 'post', 'normal' );
 }
-add_action( 'admin_menu', 'my_remove_meta_boxes' );
+add_action( 'admin_menu', 'veritae_theme_remove_meta_boxes' );
 
-function ev_unregister_taxonomy(){
+function veritae_theme_unregister_taxonomy(){
     register_taxonomy('category', array());
 }
-add_action('init', 'ev_unregister_taxonomy');
+add_action('init', 'veritae_theme_unregister_taxonomy');
+
+function veritae_theme_filter_tipo_post($query) {
+	if(filter_has_var(INPUT_GET, 'tipo')) {
+		$submitted_tipo = explode(',', filter_input(INPUT_GET, 'tipo'));
+		
+		$query->set('meta_query', array(
+							array(
+								'key' => 'tipo_postagem',
+								'value' => $submitted_tipo,
+								'compare' => 'IN'
+							)
+						));
+	}
+}
+add_action('pre_get_posts','veritae_theme_filter_tipo_post');
