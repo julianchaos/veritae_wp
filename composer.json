@@ -1,0 +1,13 @@
+{
+    "name": "ndrade/veritae-tema-w-p",
+    "description": "Tema WP, derivado do tema Maya Reloaded, para atender às necessidades da Veritae.",
+    "authors": [
+        {
+            "name": "Julian Andrade",
+            "email": "julian@ndrade.com.br"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "v0.8.0"
+    }
+}
