@@ -9,6 +9,11 @@ jQuery( document ).ready(function() {
 		jQuery('#tipo-form [name=tipo]').val(tipo.join(','));
 		jQuery('#tipo-form').submit();
 	});
+	
+	/** Remoção do botão de download do WP Advanced PDF */
+	if(jQuery('div a[title="Download PDF"]').length > 0) {
+		jQuery('div a[title="Download PDF"]').parent().hide();
+	}
 });
 
 

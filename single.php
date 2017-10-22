@@ -46,7 +46,7 @@ if (have_posts()) {
 	$autor_artigo = get_post_meta($post->ID, 'autor_artigo', true);
 	
 	$tipo_arquivo = get_post_meta($post->ID, 'tipo_arquivo', true);
-	$arquivo_url = 'javascript: window.print()';
+	$arquivo_url = get_permalink() . "?format=pdf";
 	if($tipo_arquivo === 'remoto') {
 		$arquivo_url = get_post_meta($post->ID, 'arquivo_url', true);
 	}
@@ -135,14 +135,16 @@ if (have_posts()) {
 								<strong>Ementa:</strong> <?php echo $ementa ?>
 							</p>
 							<h5 class="titulo-alternativo" style='color: #222'><?php echo $titulo_alternativo ?></h5>
+							
 							<?php the_content(); ?>
+							
 							<p>
 								<strong>Fonte: </strong> <?php echo $fonte['titulo'] . ' em ' . $fonte['data'] ?><br />
 								<strong>Autor:</strong> <?php echo $autor_artigo ?>
 							</p>
 							<p>
 								<div class="btn un-btn-12">
-									<a target="_self" href="<?php echo $arquivo_url ?>" 
+									<a target="_blank" rel="noindex,nofollow" href="<?php echo $arquivo_url ?>" 
 									   <?php if($tipo_arquivo === 'remoto') { echo 'download';} ?>>Download PDF</a>
 								</div>
 							</p>
