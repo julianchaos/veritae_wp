@@ -46,9 +46,15 @@ if (have_posts()) {
 	$autor_artigo = get_post_meta($post->ID, 'autor_artigo', true);
 	
 	$tipo_arquivo = get_post_meta($post->ID, 'tipo_arquivo', true);
-	$arquivo_url = get_permalink() . "?format=pdf";
-	if($tipo_arquivo === 'remoto') {
-		$arquivo_url = get_post_meta($post->ID, 'arquivo_url', true);
+	
+	switch ($tipo_arquivo) {
+		case 'local':
+			$arquivo_url = wp_get_attachment_url( get_post_meta($post->ID, 'arquivo', true) );
+			break;
+		
+		case 'remoto' :
+			$arquivo_url = get_post_meta($post->ID, 'arquivo_url', true);
+			break;
 	}
 	?>
 	<div class="un-page-wrap">
@@ -145,7 +151,7 @@ if (have_posts()) {
 							<p>
 								<div class="btn un-btn-12">
 									<a target="_blank" rel="noindex,nofollow" href="<?php echo $arquivo_url ?>" 
-									   <?php if($tipo_arquivo === 'remoto') { echo 'download';} ?>>Download PDF</a>
+									   download >Download PDF</a>
 								</div>
 							</p>
 						</article>
