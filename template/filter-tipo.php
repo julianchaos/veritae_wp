@@ -1,6 +1,11 @@
 <?php
 ob_start();
 ?><form id='tipo-form' method='get'>
+	<?php
+	if(filter_has_var(INPUT_GET, 's')) { ?>
+	<input type='hidden' name='s' value='<?php echo filter_input(INPUT_GET, 's') ?>' />
+<?php
+	} ?>
 	<input type='hidden' name="tipo" />
 	<?php
 	$submitted_tipo = array();
