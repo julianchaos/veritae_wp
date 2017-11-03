@@ -31,6 +31,15 @@ if (have_posts()) {
 	}
 	
 	/* Custom Fields */
+	$area_conhecimento = wp_get_post_terms($post->ID, 'area_conhecimento');
+	$area_conhecimento_title = null;
+	if(
+			is_array($area_conhecimento) && 
+			count($area_conhecimento) > 0) {
+		
+		$area_conhecimento_title = $area_conhecimento[0]->name;
+	}
+	
 	$tipo_postagem = get_post_meta($post->ID, 'tipo_postagem', true);
 	$titulo_alternativo = get_post_meta($post->ID, 'titulo_alternativo', true);
 	$ato = array(
@@ -46,9 +55,15 @@ if (have_posts()) {
 	$autor_artigo = get_post_meta($post->ID, 'autor_artigo', true);
 	
 	$tipo_arquivo = get_post_meta($post->ID, 'tipo_arquivo', true);
-	$arquivo_url = get_permalink() . "?format=pdf";
-	if($tipo_arquivo === 'remoto') {
-		$arquivo_url = get_post_meta($post->ID, 'arquivo_url', true);
+	
+	switch ($tipo_arquivo) {
+		case 'local':
+			$arquivo_url = wp_get_attachment_url( get_post_meta($post->ID, 'arquivo', true) );
+			break;
+		
+		case 'remoto' :
+			$arquivo_url = get_post_meta($post->ID, 'arquivo_url', true);
+			break;
 	}
 	?>
 	<div class="un-page-wrap">
@@ -122,32 +137,26 @@ if (have_posts()) {
 						}
 						?>
 
-	                    <div class="un-page-div"></div>
-
 	                    <article>
-							<h5 class="ato-titulo" style="color: #222;">Ato</h5>
-							<p class="ato-content">
-								<strong>Tipo:</strong> <?php echo $ato['tipo'] ?><br />
-								<strong>Número:</strong> <?php echo $ato['numero'] ?><br />
-								<strong>Informações:</strong> <?php echo $ato['informacoes'] ?><br />
-							</p>
-							<p>
-								<strong>Ementa:</strong> <?php echo $ementa ?>
-							</p>
-							<h5 class="titulo-alternativo" style='color: #222'><?php echo $titulo_alternativo ?></h5>
+							<img src='<?php echo get_stylesheet_directory_uri() ?>/assets/img/logos/veritae-15-azul.jpg' alt="Veritae 15 anos"
+								 class='veritae-logo'/>
+							
+							<p class='veritae-voe-data'>Ano XIV - Edição Diária - VOE <?php the_date('Y/M/d') ?></p>
+							
+							<div class='veritae-voe-tipo'>
+								<h2><?php echo $tipo_postagem ?></h2>
+								<h3><?php echo $area_conhecimento_title ?></h3>
+							</div>
+							
+							<h5 class="titulo-alternativo"><?php echo $titulo_alternativo ?></h5>
 							
 							<?php the_content(); ?>
 							
-							<p>
-								<strong>Fonte: </strong> <?php echo $fonte['titulo'] . ' em ' . $fonte['data'] ?><br />
-								<strong>Autor:</strong> <?php echo $autor_artigo ?>
-							</p>
-							<p>
-								<div class="btn un-btn-12">
-									<a target="_blank" rel="noindex,nofollow" href="<?php echo $arquivo_url ?>" 
-									   <?php if($tipo_arquivo === 'remoto') { echo 'download';} ?>>Download PDF</a>
-								</div>
-							</p>
+							<div class="btn un-btn-12">
+								<a target="_blank" rel="noindex,nofollow" href="<?php echo $arquivo_url ?>" 
+								   class="download-pdf" download >Download PDF</a>
+							</div>
+							
 						</article>
 
 						<?php

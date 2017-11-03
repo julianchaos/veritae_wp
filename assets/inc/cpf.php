@@ -186,25 +186,25 @@ if(function_exists("register_field_group"))
 				'default_value' => 'local',
 				'layout' => 'horizontal',
 			),
-//			array (
-//				'key' => 'field_591c6ccd38bc1',
-//				'label' => 'Arquivo',
-//				'name' => 'arquivo',
-//				'type' => 'file',
-//				'conditional_logic' => array (
-//					'status' => 1,
-//					'rules' => array (
-//						array (
-//							'field' => 'field_593054f32aeeb',
-//							'operator' => '==',
-//							'value' => 'local',
-//						),
-//					),
-//					'allorany' => 'all',
-//				),
-//				'save_format' => 'object',
-//				'library' => 'uploadedTo',
-//			),
+			array (
+				'key' => 'field_591c6ccd38bc1',
+				'label' => 'Arquivo',
+				'name' => 'arquivo',
+				'type' => 'file',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_593054f32aeeb',
+							'operator' => '==',
+							'value' => 'local',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'save_format' => 'object',
+				'library' => 'uploadedTo',
+			),
 			array (
 				'key' => 'field_593054cb2aeea',
 				'label' => 'Arquivo URL',
