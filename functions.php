@@ -29,7 +29,7 @@ function veritae_theme_unregister_taxonomy(){
 add_action('init', 'veritae_theme_unregister_taxonomy');
 
 function veritae_theme_filter_tipo_post($query) {
-	if(filter_has_var(INPUT_GET, 'tipo')) {
+	if( filter_has_var(INPUT_GET, 'tipo') && $query->is_main_query() ) {
 		$submitted_tipo = explode(',', filter_input(INPUT_GET, 'tipo'));
 		
 		$query->set('meta_query', array(
