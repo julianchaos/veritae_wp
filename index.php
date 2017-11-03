@@ -42,6 +42,9 @@ get_header(); ?>
             </div>
 
         </div>
+		
+		<?php if(is_home) {get_template_part('template/home', 'header');} ?>
+		
 
         <div class="<?php un_echo( $wrap_class, 'attr' ); ?>" id="un-page-content">
 
