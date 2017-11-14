@@ -137,7 +137,7 @@ if (have_posts()) {
 						}
 						?>
 
-	                    <article>
+	                    <article class="<?php echo $tipo_postagem ?>">
 							<img src='<?php echo get_stylesheet_directory_uri() ?>/assets/img/logos/veritae-15-azul.jpg' alt="Veritae 15 anos"
 								 class='veritae-logo'/>
 							
@@ -148,9 +148,39 @@ if (have_posts()) {
 								<h3><?php echo $area_conhecimento_title ?></h3>
 							</div>
 							
-							<h5 class="titulo-alternativo"><?php echo $titulo_alternativo ?></h5>
+							<h4 class="titulo-alternativo"><?php echo $titulo_alternativo ?></h4>
+							
+							<?php if(!empty($ato['informacoes'])) { ?>
+							<div class="veritae-voe-ato h5">
+								<?php echo $ato['informacoes'] ?>
+							</div>
+							<?php } ?>
+							
+							<?php if(!empty($ementa)) { ?>
+							<div class="veritae-voe-ementa h5">
+								<?php echo $ementa ?>
+							</div>
+							<?php } ?>
 							
 							<?php the_content(); ?>
+							
+							<?php if( !empty($fonte['titulo']) && !empty($fonte['data']) ) { ?>
+							<div class="veritae-voe-fonte">
+								<?php if(!empty($fonte['titulo'])) { ?>
+								<span style="display: block">Fonte: <?php echo $fonte['titulo'] ?></span>
+								<?php } ?>
+
+								<?php if(!empty($fonte['data'])) { ?>
+								<span style="display: block">Data da Fonte: <?php echo $fonte['data'] ?></span>
+								<?php } ?>
+							</div>
+							<?php } ?>
+							
+							<?php if( !empty($autor_artigo)) { ?>
+							<div class="veritae-voe-autor">
+								Autor: <?php echo $autor_artigo ?>
+							</div>
+							<?php } ?>
 							
 							<div class="btn un-btn-12">
 								<a target="_blank" rel="noindex,nofollow" href="<?php echo $arquivo_url ?>" 
