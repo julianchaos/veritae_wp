@@ -42,3 +42,20 @@ function veritae_theme_filter_tipo_post($query) {
 	}
 }
 add_action('pre_get_posts','veritae_theme_filter_tipo_post');
+
+function veritae_theme_change_post_order($query) {
+	if($query->is_main_query()) {
+		$args =  array( 'post_date' => 'DESC', 'title' => 'ASC' );
+		$query->set( 'orderby', $args );
+	}
+}
+add_action('pre_get_posts','veritae_theme_change_post_order');
+
+function veritae_theme_force_post_zerohour($data, $postarr) {
+	$post_date = strtotime($data['post_date']);
+	$data['post_date'] = date("Y-m-d 12:00:00", $post_date);
+	$data['post_date_gmt'] = date("Y-m-d 12:00:00", $post_date);
+
+	return $data;
+}
+add_filter( 'wp_insert_post_data' , 'veritae_theme_force_post_zerohour' , '99', 2 );
