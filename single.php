@@ -138,7 +138,7 @@ if (have_posts()) {
 						?>
 
 	                    <article class="<?php echo $tipo_postagem ?>">
-							<img src='<?php echo get_stylesheet_directory_uri() ?>/assets/img/logos/veritae-15-azul.jpg' alt="Veritae 15 anos"
+							<img src='<?php echo get_stylesheet_directory_uri() ?>/assets/img/logos/veritae-15-azul_v2.png' alt="Veritae 15 anos"
 								 class='veritae-logo'/>
 							
 							<p class='veritae-voe-data'>Ano XIV - Edição Diária - VOE <?php the_date('Y/M/d') ?></p>
