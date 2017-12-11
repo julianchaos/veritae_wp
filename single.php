@@ -162,7 +162,9 @@ if (have_posts()) {
 							</div>
 							<?php } ?>
 							
-							<?php the_content(); ?>
+							<div class="veritae-voe-conteudo">
+								<?php the_content(); ?>
+							</div>
 							
 							<?php if( !empty($fonte['titulo']) && !empty($fonte['data']) ) { ?>
 							<div class="veritae-voe-fonte">
