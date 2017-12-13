@@ -184,7 +184,7 @@ if (have_posts()) {
 							</div>
 							<?php } ?>
 							
-							<div class="btn un-btn-12">
+							<div class="veritae-voe-btn btn un-btn-12">
 								<a target="_blank" rel="noindex,nofollow" href="<?php echo $arquivo_url ?>" 
 								   class="download-pdf" download >Download PDF</a>
 							</div>
