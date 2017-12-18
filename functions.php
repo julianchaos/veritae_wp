@@ -40,6 +40,48 @@ function veritae_theme_filter_tipo_post($query) {
 							)
 						));
 	}
+	
+	if ( filter_has_var(INPUT_GET, 'voe') && $query->is_main_query() ){
+		$submitted_voe = filter_input(INPUT_GET, 'voe');
+
+		switch ($submitted_voe) {
+			case 'anual':
+				$datequery = array(
+					'year' => date('Y'),
+				);
+				break;
+			case 'mensal':
+				$datequery = array(
+					'year' => date('Y'),
+					'month' => date('m'),
+				);
+				break;
+			case 'semanal': 
+				$datequery = array(
+					'year' => date('Y'),
+					'week' => date('W'),
+				);
+				break;
+			case 'ontem':
+				$basetime = strtotime("-1 day");
+				$datequery = array(
+					'year' => date('Y', $basetime),
+					'month' => date('m', $basetime),
+					'day' => date('d', $basetime)
+				);
+				break;
+			case 'diario':
+			default:
+				$datequery = array(
+					'year' => date('Y'),
+					'month' => date('m'),
+					'day' => date('d')
+				);
+				break;
+		}
+
+		$query->set('date_query', $datequery);
+	}
 }
 add_action('pre_get_posts','veritae_theme_filter_tipo_post');
 
@@ -59,3 +101,29 @@ function veritae_theme_force_post_zerohour($data, $postarr) {
 	return $data;
 }
 add_filter( 'wp_insert_post_data' , 'veritae_theme_force_post_zerohour' , '99', 2 );
+
+function veritae_voe_edicoes($atts) {
+	$mode = "diario";
+	
+	if(array_key_exists('mode', $atts)) {
+		$mode = $atts['mode'];
+	}
+	
+	switch ($mode) {
+		case 'anual':
+		case 'mensal':
+		case 'semanal':
+		case 'ontem':
+		case 'diario':
+		default:
+			break;
+	}
+	
+	$args = array(
+		'date_query' => array(
+			
+		)
+	);
+	$query = new WP_Query($args);
+}
+add_shortcode( 'veritae-voe-edicoes', 'veritae_voe_edicoes' );
