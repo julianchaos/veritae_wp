@@ -150,7 +150,7 @@ get_header(); ?>
 	                                        </a>
 	                                    </div>
 	
-	                                    <div class="un-post-exc"><?php un_echo( un_post_exerpt(), 'html' ); ?></div>
+	                                    <div class="un-post-exc"><?php un_echo( un_post_exerpt(null, 40), 'html' ); ?></div>
 	
 	                                    <?php
 	
