@@ -23,7 +23,10 @@ get_header(); ?>
     ?>
 
     <!-- UN-PAGE -->
-    <div class="un-page-wrap un-loop">
+	<?php
+	$voeclass = filter_has_var(INPUT_GET, "voe") ? 'voe-edicao' : null;
+	?>
+    <div class="un-page-wrap un-loop <?php echo $voeclass ?>">
 
         <div class="un-page-head wrap-full d-flex" style="<?php un_echo( $head_style, 'attr' ); ?>">
 
@@ -147,7 +150,7 @@ get_header(); ?>
 	                                        </a>
 	                                    </div>
 	
-	                                    <div class="un-post-exc"><?php un_echo( un_post_exerpt(), 'html' ); ?></div>
+	                                    <div class="un-post-exc"><?php un_echo( un_post_exerpt(null, 40), 'html' ); ?></div>
 	
 	                                    <?php
 	

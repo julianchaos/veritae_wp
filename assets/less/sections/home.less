@@ -5,6 +5,9 @@ body.home {
 }
 
 #home-sec1 {
+	background: transparent url(../img/home/abertura_01.jpg) no-repeat center center;
+	background-size: cover;
+	
 	padding-top: 85px;
 	
 	* {
@@ -13,6 +16,7 @@ body.home {
 	
 	@media (min-width: @main-menu-breakpoint) {
 		height: ~"calc(100vh - 70px)";
+		min-height: 321px;
 		padding-top: 15px;
 	}
 	
@@ -20,10 +24,22 @@ body.home {
 	    border: 2px solid #FFF;
 		padding: 0 10px;
 		line-height: 45px;
-		display: inline-block;	
+		display: inline-block;
+		font-style: normal;
 	}
-	.vc_parallax-inner {
-		background-position: bottom center;
+
+	.fa-container {
+		font-size: 38px;
+		text-align: center;
+	}
+}
+
+.voe-edicao {
+	#home-sec1 {
+		/*display: none;*/
+		@media (min-width: @main-menu-breakpoint) {
+			height: auto;
+		}
 	}
 }
 
