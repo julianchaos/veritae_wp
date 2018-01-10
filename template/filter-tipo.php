@@ -16,11 +16,11 @@ ob_start();
 
 	$tipo_postagem = array(
 		'lex' => 'Lex',
-		'noticia' => 'Notícia',
-		'artigo' => 'Artigo',
-		'materia' => 'Matéria',
-		'informacao' => 'Informação',
-		'jurisprudencia' => 'Jurisprudência',
+		'noticia' => 'Notícias',
+		'artigo' => 'Artigos',
+		'materia' => 'Matérias',
+		'informacao' => 'Informações',
+		'jurisprudencia' => 'Jurisprudências',
 	);
 
 	foreach ($tipo_postagem as $key => $label) {
