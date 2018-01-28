@@ -56,9 +56,14 @@ if (have_posts()) {
 	
 	$tipo_arquivo = get_post_meta($post->ID, 'tipo_arquivo', true);
 	
+	$download_attr = true;
 	switch ($tipo_arquivo) {
 		case 'local':
 			$arquivo_url = wp_get_attachment_url( get_post_meta($post->ID, 'arquivo', true) );
+			if(!$arquivo_url) {
+				$arquivo_url = "javascript: window.print()";
+				$download_attr = false;
+			}
 			break;
 		
 		case 'remoto' :
@@ -186,7 +191,7 @@ if (have_posts()) {
 							
 							<div class="veritae-voe-btn btn un-btn-12">
 								<a target="_blank" rel="noindex,nofollow" href="<?php echo $arquivo_url ?>" 
-								   class="download-pdf" download >Download PDF</a>
+								   class="download-pdf" <?php if($download_attr) { echo 'download'; } ?>>Download PDF</a>
 							</div>
 							
 						</article>

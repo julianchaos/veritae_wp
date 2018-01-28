@@ -71,3 +71,39 @@ body.single-post {
 		}
 	}
 }
+
+@media print {
+	body.single-post {
+		header {
+			display: none;
+		}
+		
+		article {
+			.veritae-voe-btn {
+				display: none;
+			}
+		}
+		
+		footer {
+			.un-footer-middle {
+				background-color: transparent;
+			}
+			.un-footer-bottom {
+				background-color: transparent;
+				
+				.un-footer-socials {
+					display: none;
+				}
+				.un-footer-copy {
+					color: @veritae-blue;
+					float: none;
+					text-align: center;
+					
+					.un-footer-logo {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
