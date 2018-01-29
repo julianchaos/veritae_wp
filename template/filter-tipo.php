@@ -34,6 +34,8 @@ ob_start();
 		'materia' => 'Matérias',
 		'informacao' => 'Informações',
 		'jurisprudencia' => 'Jurisprudências',
+		'orientacoes' => 'Orientações',
+		'edicoes-voe' => 'Edições VOE',
 	);
 
 	foreach ($tipo_postagem as $key => $label) {

@@ -19,6 +19,8 @@ if(function_exists("register_field_group"))
 					'materia' => 'Matéria',
 					'informacao' => 'Informação',
 					'jurisprudencia' => 'Jurisprudência',
+					'orientacoes' => 'Orientações',
+					'edicoes-voe' => 'Edições VOE',
 				),
 				'default_value' => '',
 				'allow_null' => 0,
