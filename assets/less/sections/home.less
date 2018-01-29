@@ -1,6 +1,24 @@
 body.home {
-	.un-page-head {
-		display: none;
+	.un-page-wrap {
+		.un-page-head {
+			display: none;
+			
+			.un-page-head-title {
+				@media(min-width: 768px) {
+					font-size: 62px;
+				}
+			}
+		}
+		
+		&.voe-edicao {
+			.un-page-head {
+				display: flex;
+			}
+			#home-sec1 {
+				display: none;
+			}
+			
+		}
 	}
 }
 

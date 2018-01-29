@@ -24,7 +24,30 @@ get_header(); ?>
 
     <!-- UN-PAGE -->
 	<?php
-	$voeclass = filter_has_var(INPUT_GET, "voe") ? 'voe-edicao' : null;
+	$voeclass = null;
+	if( filter_has_var(INPUT_GET, "voe") ) {
+		$voeclass = 'voe-edicao';
+		
+		switch(filter_input(INPUT_GET, 'voe')) {
+			case 'diario' : 
+				$head_data['title'] = 'Edição Diária';
+				break;
+			case 'ontem' : 
+				$head_data['title'] = 'Edição de Ontem';
+				break;
+			case 'semanal' : 
+				$head_data['title'] = 'Edição Semanal';
+				break;
+			case 'mensal' : 
+				$head_data['title'] = 'Edição Mensal';
+				break;
+			case 'anual' : 
+				$head_data['title'] = 'Edição Anual';
+				break;
+		}
+	}
+	
+	
 	?>
     <div class="un-page-wrap un-loop <?php echo $voeclass ?>">
 
