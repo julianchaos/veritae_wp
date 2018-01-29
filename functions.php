@@ -60,9 +60,16 @@ function veritae_theme_filter_tipo_post($query) {
 				);
 				break;
 			case 'semanal': 
+				$weekday = date('w');
+				
+				$basetime = strtotime("-$weekday day");
 				$datequery = array(
-					'year' => date('Y'),
-					'week' => date('W'),
+					'after' => array(
+						'year' => date('Y', $basetime),
+						'month' => date('m', $basetime),
+						'day' => date('d', $basetime)
+					),
+					'inclusive' => true
 				);
 				break;
 			case 'ontem':
