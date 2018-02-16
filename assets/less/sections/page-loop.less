@@ -2,33 +2,44 @@
     Created on : Oct 18, 2017, 4:50:42 PM
     Author     : Julian Andrade <julian@ndrade.com.br>
 */
-.un-page-loop {
-	margin-top: 0 !important;
-	
-	.filter-container {
-		margin-bottom: 0;
-		padding-bottom: 0 !important;
-		
-		.vc_tta-container {
-			margin-bottom: 0;
-			
-			.vc_tta-panel-body {
-				p {
-					display: none;
-				}
-				br {
-					display: none;
-				}
-				
-				#tipo-submit {
-					margin-top: 12px;
-				}
+body {
+	&.archive {
+		.un-page-head-title {
+			text-transform: uppercase;
+
+			@media (min-width: 768px) {
+				font-size: 62px;
 			}
 		}
-		.clear-filter {
-			color: orangered;
-			font-weight: bold;
-			text-decoration: underline;
+	}
+	.un-page-loop {
+		margin-top: 0 !important;
+
+		.filter-container {
+			margin-bottom: 0;
+			padding-bottom: 0 !important;
+
+			.vc_tta-container {
+				margin-bottom: 0;
+
+				.vc_tta-panel-body {
+					p {
+						display: none;
+					}
+					br {
+						display: none;
+					}
+
+					#tipo-submit {
+						margin-top: 12px;
+					}
+				}
+			}
+			.clear-filter {
+				color: orangered;
+				font-weight: bold;
+				text-decoration: underline;
+			}
 		}
 	}
 }

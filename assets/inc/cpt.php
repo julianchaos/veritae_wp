@@ -3,6 +3,32 @@
 function cptui_register_my_taxes() {
 
 	/**
+	 * Taxonomy: Tipos de postagem.
+	 */
+	
+	$labels = array(
+		'name' => __( 'Tipos de postagem', 'Veritae' ),
+		'singular_name' => __( 'Tipo de postagem', 'Veritae' )
+	);
+	
+	$args = array(
+		'label' => __('Tipos de postagem', 'Veritae'),
+		'labels' => $labels,
+		'public' => true,
+		"hierarchical" => false,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'tipo_postagem', 'with_front' => true, ),
+		"show_admin_column" => false,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"show_in_quick_edit" => false,
+	);
+	register_taxonomy( 'tipo_postagem', array( 'post' ), $args );
+	
+	/**
 	 * Taxonomy: Áreas de conhecimento.
 	 */
 

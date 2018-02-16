@@ -1,45 +1,36 @@
 <?php
 /*
-Description: Taxonomy - Área de conhecimento
+Description: Taxonomy - Tipo de postagem
 Theme: Maya Reloaded
 */
-$correlatos = false;
-if(get_query_var('area_conhecimento') === 'correlatos') {
-	$correlatos = true;
-	
-	query_posts(array(
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'area_conhecimento',
-				'field' => 'slug',
-				'terms' => array(
-					'previdencia',
-					'trabalho',
-					'seguranca-e-saude-no-trabalho',
-				),
-				'operator' => 'NOT IN',
-			)
-		),
-	));
-	
-	add_filter('wp_title', 'filter_pagetitle');
-	function filter_pagetitle() {
-		return 'Áreas de conhecimento Correlatos';
-	}
-	
-	global $wp_query;
-	$wp_query->is_archive = true;
-	$wp_query->is_home = false;
+
+$tipo_postagem = get_query_var('tipo_postagem');
+query_posts(array(
+	'meta_query' => array(
+		array(
+			'key'=>'tipo_postagem',
+			'value' => $tipo_postagem
+		)
+	)
+));
+
+$term = get_term_by('slug', $tipo_postagem, 'tipo_postagem');
+
+add_filter('wp_title', 'filter_pagetitle');
+function filter_pagetitle() {
+	return "Tipo de Postagem";
 }
+
+global $wp_query;
+$wp_query->is_archive = true;
+$wp_query->is_home = false;
 
 
 get_header(); ?>
     <?php
     // Loop Page Data
     $head_data = un_page_head_builder();
-	if($correlatos) {
-		$head_data['title'] = 'Correlatos';
-	}
+	$head_data['title'] = $term->name;
 
     $head_style = $head_data['bg'].' height:'.$head_data['height'].'; ';
 

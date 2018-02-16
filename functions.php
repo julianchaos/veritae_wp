@@ -137,3 +137,15 @@ function veritae_voe_edicoes($atts) {
 	$query = new WP_Query($args);
 }
 add_shortcode( 'veritae-voe-edicoes', 'veritae_voe_edicoes' );
+
+function filter_taxonomy_body_class($wp_classes, $extra_classes) {
+	$new_classes = $wp_classes;
+
+	if(is_archive()) {
+		$exclude = array('home');
+		$new_classes = array_diff($wp_classes, $exclude);
+	}
+
+	return array_merge($new_classes, array($extra_classes));
+}
+add_filter( 'body_class', 'filter_taxonomy_body_class', 10, 2 );
