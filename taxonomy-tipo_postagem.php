@@ -69,7 +69,7 @@ get_header(); ?>
 
             <div class="un-page-loop row gutter-30">
 				
-				<?php get_template_part('template/filter', 'tipo') ?>
+				<?php get_template_part('template/filter', 'area_conhecimento') ?>
 
                 <?php if( $layout_data['layout'] == 'side_L' ){ ?>
 

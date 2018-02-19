@@ -1,13 +1,15 @@
 jQuery( document ).ready(function() {
     /** Filtro de postagens */
-	jQuery('#tipo-submit').click(function(){
-		var tipo = [];
-		jQuery('#tipo-form :checked').each(function(index, obj){
-			tipo.push(jQuery(obj).val());
+	jQuery('#filter-form-submit').click(function(){
+		var filter = jQuery('#filter-form [name=filter]').val();
+		
+		var filter_query = [];
+		jQuery('#filter-form :checked').each(function(index, obj){
+			filter_query.push(jQuery(obj).val());
 		});
 		
-		jQuery('#tipo-form [name=tipo]').val(tipo.join(','));
-		jQuery('#tipo-form').submit();
+		jQuery('#filter-form [name='+ filter +']').val(filter_query.join(','));
+		jQuery('#filter-form').submit();
 	});
 	
 	/** Remoção do botão de download do WP Advanced PDF */
