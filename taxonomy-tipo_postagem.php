@@ -4,46 +4,23 @@ Description: Taxonomy - Tipo de postagem
 Theme: Maya Reloaded
 */
 
-$tipo_postagem = get_query_var('tipo_postagem');
-query_posts(array(
-	'meta_query' => array(
-		array(
-			'key'=>'tipo_postagem',
-			'value' => $tipo_postagem
-		)
-	)
-));
+get_header(); 
 
-$term = get_term_by('slug', $tipo_postagem, 'tipo_postagem');
+// Loop Page Data
+$head_data = un_page_head_builder();
 
-add_filter('wp_title', 'filter_pagetitle');
-function filter_pagetitle() {
-	return "Tipo de Postagem";
+$head_style = $head_data['bg'].' height:'.$head_data['height'].'; ';
+
+if($head_data['color']){ $head_style .= 'color:'.$head_data['color'].'; '; }
+
+$layout_data = un_page_layout_builder();
+
+if( $layout_data['layout'] == 'full_small' ){
+	$wrap_class = 'wrap-boxed-narrow';
+}else{
+	$wrap_class = 'wrap-boxed';
 }
-
-global $wp_query;
-$wp_query->is_archive = true;
-$wp_query->is_home = false;
-
-
-get_header(); ?>
-    <?php
-    // Loop Page Data
-    $head_data = un_page_head_builder();
-	$head_data['title'] = $term->name;
-
-    $head_style = $head_data['bg'].' height:'.$head_data['height'].'; ';
-
-    if($head_data['color']){ $head_style .= 'color:'.$head_data['color'].'; '; }
-
-    $layout_data = un_page_layout_builder();
-
-    if( $layout_data['layout'] == 'full_small' ){
-        $wrap_class = 'wrap-boxed-narrow';
-    }else{
-        $wrap_class = 'wrap-boxed';
-    }
-    ?>
+?>
 
     <!-- UN-PAGE -->
     <div class="un-page-wrap un-loop">

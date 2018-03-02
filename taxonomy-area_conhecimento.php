@@ -13,7 +13,7 @@ if(get_query_var('area_conhecimento') === 'correlatos') {
 				'taxonomy' => 'area_conhecimento',
 				'field' => 'slug',
 				'terms' => array(
-					'previdencia',
+					'previdencia-social',
 					'trabalho',
 					'seguranca-e-saude-no-trabalho',
 				),
