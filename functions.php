@@ -31,69 +31,124 @@ function veritae_theme_unregister_taxonomy(){
 }
 add_action('init', 'veritae_theme_unregister_taxonomy');
 
-function veritae_theme_filter_tipo_post($query) {
+function veritae_theme_filter_post($query) {
 	if( filter_has_var(INPUT_GET, 'tipo') && $query->is_main_query() ) {
-		$submitted_tipo = explode(',', filter_input(INPUT_GET, 'tipo'));
-		
-		$query->set('meta_query', array(
-							array(
-								'key' => 'tipo_postagem',
-								'value' => $submitted_tipo,
-								'compare' => 'IN'
-							)
-						));
+		veritae_theme_filter_post_tipo($query);
+	}
+	
+	if ( filter_has_var(INPUT_GET, 'area-conhecimento') && $query->is_main_query() ){
+		veritae_theme_filter_post_area_conhecimento($query);
 	}
 	
 	if ( filter_has_var(INPUT_GET, 'voe') && $query->is_main_query() ){
-		$submitted_voe = filter_input(INPUT_GET, 'voe');
+		veritae_theme_filter_post_voe($query);
+	}
+}
+function veritae_theme_filter_post_tipo($query) {
+	$submitted_tipo = explode(',', filter_input(INPUT_GET, 'tipo'));
+	
+	$tipo_arr = [];
+	foreach($submitted_tipo as $tipo_slug) {
+		$term = get_term_by('slug', $tipo_slug, 'tipo_postagem');
+		$tipo_arr[] = $term->term_id;
+	}
+	
+	$query->set('meta_query', array(
+				array(
+					'key' => 'tipo_postagem',
+					'value' => $tipo_arr,
+					'compare' => 'IN'
+				)
+			));
+}
+function veritae_theme_filter_post_area_conhecimento($query) {
+	$submitted_area = explode(',', filter_input(INPUT_GET, 'area-conhecimento'));
+	
+	$area_arr = [];
+	foreach($submitted_area as $area_slug) {
+		$term = get_term_by('slug', $area_slug, 'area_conhecimento');
+		$area_arr[] = serialize(array($term->term_id));
+	}
+	
+	$meta_query = array( 
+		'relation' => 'OR',
+		array(
+			'key' => 'area_conhecimento',
+			'value' => $area_arr,
+			'compare' => 'IN'
+		));
+	
+	if(in_array('correlatos', $submitted_area)) {
+		$remove = array(
+				'previdencia-social',
+				'trabalho',
+				'seguranca-e-saude-no-trabalho',
+			);
+		
+		$remove_arr = [];
+		foreach($remove as $area_slug) {
+			$term = get_term_by('slug', $area_slug, 'area_conhecimento');
+			$remove_arr[] = serialize(array($term->term_id));
+		}
+		
+		$meta_query[] = array(
+				'key' => 'area_conhecimento',
+				'value' => $remove_arr,
+				'compare' => 'NOT IN'
+			);
+	}
+	
+	$query->set('meta_query', $meta_query);
+}
+function veritae_theme_filter_post_voe($query) {
+	$submitted_voe = filter_input(INPUT_GET, 'voe');
 
-		switch ($submitted_voe) {
-			case 'anual':
-				$datequery = array(
-					'year' => date('Y'),
-				);
-				break;
-			case 'mensal':
-				$datequery = array(
-					'year' => date('Y'),
-					'month' => date('m'),
-				);
-				break;
-			case 'semanal': 
-				$weekday = date('w');
-				
-				$basetime = strtotime("-$weekday day");
-				$datequery = array(
-					'after' => array(
-						'year' => date('Y', $basetime),
-						'month' => date('m', $basetime),
-						'day' => date('d', $basetime)
-					),
-					'inclusive' => true
-				);
-				break;
-			case 'ontem':
-				$basetime = strtotime("-1 day");
-				$datequery = array(
+	switch ($submitted_voe) {
+		case 'anual':
+			$datequery = array(
+				'year' => date('Y'),
+			);
+			break;
+		case 'mensal':
+			$datequery = array(
+				'year' => date('Y'),
+				'month' => date('m'),
+			);
+			break;
+		case 'semanal': 
+			$weekday = date('w');
+
+			$basetime = strtotime("-$weekday day");
+			$datequery = array(
+				'after' => array(
 					'year' => date('Y', $basetime),
 					'month' => date('m', $basetime),
 					'day' => date('d', $basetime)
-				);
-				break;
-			case 'diario':
-			default:
-				$datequery = array(
-					'year' => date('Y'),
-					'month' => date('m'),
-					'day' => date('d')
-				);
-				break;
-		}
-
-		$query->set('date_query', $datequery);
+				),
+				'inclusive' => true
+			);
+			break;
+		case 'ontem':
+			$basetime = strtotime("-1 day");
+			$datequery = array(
+				'year' => date('Y', $basetime),
+				'month' => date('m', $basetime),
+				'day' => date('d', $basetime)
+			);
+			break;
+		case 'diario':
+		default:
+			$datequery = array(
+				'year' => date('Y'),
+				'month' => date('m'),
+				'day' => date('d')
+			);
+			break;
 	}
+
+	$query->set('date_query', $datequery);
 }
-add_action('pre_get_posts','veritae_theme_filter_tipo_post');
+add_action('pre_get_posts','veritae_theme_filter_post');
 
 function veritae_theme_change_post_order($query) {
 	if($query->is_main_query()) {
