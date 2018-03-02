@@ -40,7 +40,9 @@ if (have_posts()) {
 		$area_conhecimento_title = $area_conhecimento[0]->name;
 	}
 	
-	$tipo_postagem = get_post_meta($post->ID, 'tipo_postagem', true);
+	$tipo_postagem = wp_get_post_terms($post->ID, 'tipo_postagem'); //get_post_meta($post->ID, 'tipo_postagem', true);
+	$tipo_postagem_title = $tipo_postagem[0]->name;
+	
 	$titulo_alternativo = get_post_meta($post->ID, 'titulo_alternativo', true);
 	$ato = array(
 		'tipo' => get_term_by('id', get_post_meta($post->ID, 'tipo_ato', true), 'tipo_ato')->name,
@@ -77,7 +79,7 @@ if (have_posts()) {
 			<div class="wrap-boxed text-c">
 
 				<div class="un-page-head-title un-title-l fade-in-down appear"><?php un_echo($head_data['title'], 'html'); ?></div>
-				<div class="un-page-head-exc fade-in-up appear"><?php echo $tipo_postagem ?></div>
+				<div class="un-page-head-exc fade-in-up appear"><?php echo $tipo_postagem_title ?></div>
 
 	<?php if ($head_data['arrow']) { ?>
 					<i class="un-page-head-ico fa-icon-angle-down go-to" data-goto="#un-page-content"></i>
@@ -142,14 +144,14 @@ if (have_posts()) {
 						}
 						?>
 
-	                    <article class="<?php echo $tipo_postagem ?>">
+	                    <article class="<?php echo $tipo_postagem_title ?>">
 							<img src='<?php echo get_stylesheet_directory_uri() ?>/assets/img/logos/veritae-15-azul_v2.png' alt="Veritae 15 anos"
 								 class='veritae-logo'/>
 							
 							<p class='veritae-voe-data'>Ano XIV - Edição Diária - VOE <?php the_date('Y/M/d') ?></p>
 							
 							<div class='veritae-voe-tipo'>
-								<h2><?php echo $tipo_postagem ?></h2>
+								<h2><?php echo $tipo_postagem_title ?></h2>
 								<h3><?php echo $area_conhecimento_title ?></h3>
 							</div>
 							
