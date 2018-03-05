@@ -21,9 +21,9 @@ get_header('voe') ?>
 
 <?php
 
-if(filter_has_var(INPUT_GET, 'start')) {
-	$start = filter_input(INPUT_GET, 'start');
-	$end = filter_input(INPUT_GET, 'end');
+if(filter_has_var(INPUT_GET, 'after')) {
+	$start = filter_input(INPUT_GET, 'after');
+	$end = filter_input(INPUT_GET, 'before');
 	
 	$args = array(
 		'date_query' => array(
@@ -65,7 +65,8 @@ if($query->have_posts()) {
 	while($query->have_posts()) {
 		$query->the_post();
 
-		$tipo_postagem = get_post_meta($post->ID, 'tipo_postagem', true);
+		$tipo_postagem_id = get_post_meta($post->ID, 'tipo_postagem', true);
+		$tipo_postagem = get_term($tipo_postagem_id, 'tipo_postagem')->name;
 		if(!array_key_exists($tipo_postagem, $output)) {
 			$output[$tipo_postagem] = array();
 		}
