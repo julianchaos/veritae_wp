@@ -3,7 +3,18 @@
  * Template Name: VOE
  */
 
-get_header('voe') ?>
+$model = "voe";
+if(filter_has_var(INPUT_GET, 'action')) {
+	header('Content-Type: text/html');
+	header('Content-Disposition: attachment; filename="voe.html"');
+	
+	$model = "voe-download";
+}
+
+get_header($model);
+
+if($model === "voe") {
+?>
 
 <form method="get">
 	<label>
@@ -20,6 +31,7 @@ get_header('voe') ?>
 </form>
 
 <?php
+}
 
 if(filter_has_var(INPUT_GET, 'after')) {
 	$start = filter_input(INPUT_GET, 'after');
@@ -57,8 +69,6 @@ else {
 	} while (!$query->have_posts());
 	
 }
-
-
 
 $output = array();
 if($query->have_posts()) {
@@ -108,4 +118,10 @@ foreach($output as $tipo => $area_arr) {
 	}
 }
 
-get_footer('voe');
+if( $query->have_posts() && $model === 'voe') {
+	$querystring = http_build_query(array_merge($_GET, array('action'=>'download')));
+	
+	echo "<a href='?$querystring' class='btn btn-filter' >Download</a>";
+}
+
+get_footer($model);
