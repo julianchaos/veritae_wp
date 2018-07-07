@@ -113,7 +113,7 @@ foreach($output as $tipo => $area_arr) {
 		
 		
 		foreach($post_arr as $item) {
-			echo "<a href='{$item['link']}'>{$item['title']}</a><br />";
+			echo "<a href='{$item['link']}' class='voe-link'>{$item['title']}</a>";
 		}
 	}
 }
