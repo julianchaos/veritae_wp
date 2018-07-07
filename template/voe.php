@@ -5,8 +5,8 @@
 
 $model = "voe";
 if(filter_has_var(INPUT_GET, 'action')) {
-	header('Content-Type: text/html');
-	header('Content-Disposition: attachment; filename="voe.html"');
+//	header('Content-Type: text/html');
+//	header('Content-Disposition: attachment; filename="voe.html"');
 	
 	$model = "voe-download";
 }

@@ -23,7 +23,7 @@ Theme: Maya Reloaded
 			color: #174F81;
 			font-family: "Calibri",sans-serif;
 			margin: 0 auto;
-			width: 70%;
+			width: 90%;
 		}
 		
 		#main a {
