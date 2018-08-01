@@ -204,3 +204,24 @@ function filter_taxonomy_body_class($wp_classes, $extra_classes) {
 	return array_merge($new_classes, array($extra_classes));
 }
 add_filter( 'body_class', 'filter_taxonomy_body_class', 10, 2 );
+
+function veritae_pesquisa_atos_legais() {
+	$args = array(
+		'taxonomy' => 'tipo_ato',
+		'hide_empty' => false,
+	);
+	$terms = get_terms( $args );
+	
+	echo "<div class='veritae-pesquisa-atos-legais'>";
+	foreach($terms as $term) {
+		if ($term->count > 0) {
+			$link = get_term_link($term);
+			echo "<a href='$link'>{$term->name}</a>";		
+		} else {
+			echo "<span class='empty'>{$term->name}</span>";
+		}
+		
+	}
+	echo "</div>";
+}
+add_shortcode( 'veritae-pesquisa-atos-legais', 'veritae_pesquisa_atos_legais');
