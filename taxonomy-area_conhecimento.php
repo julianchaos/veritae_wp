@@ -109,6 +109,12 @@ get_header(); ?>
 	                    <?php while ( have_posts() ) { the_post(); // LOOP ?>
 
 	                        <?php
+
+							$post_title = get_post_meta($post->ID, 'informacoes_ato', true);
+							if(empty($post_title)) {
+								$post_title = get_the_title();
+							}
+
 	                        // Post Format
 	                        $format = get_post_format();
 	                        if( $format == 'gallery' ){
@@ -171,7 +177,7 @@ get_header(); ?>
 	
 	                                    <div class="un-post-title">
 	                                        <a href="<?php the_permalink(); ?>">
-	                                            <?php the_title(); ?>
+	                                            <?php echo $post_title ?>
 	                                        </a>
 	                                    </div>
 	
