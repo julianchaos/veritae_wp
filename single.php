@@ -47,7 +47,7 @@ if (have_posts()) {
 	$ato = array(
 		'tipo' => get_term_by('id', get_post_meta($post->ID, 'tipo_ato', true), 'tipo_ato')->name,
 		'numero' => get_post_meta($post->ID, 'numero_ato', true),
-		'informacoes' => get_post_meta($post->ID, 'informações_ato', true),
+		'informacoes' => get_post_meta($post->ID, 'informacoes_ato', true),
 	);
 	$ementa = get_post_meta($post->ID, 'ementa', true);
 	$fonte = array(
