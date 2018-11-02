@@ -1,3 +1,4 @@
+<?php require_once( __DIR__ . '/../vendor/autoload.php') ?>
 <?php
 /*
  * Template Name: VOE
@@ -5,9 +6,7 @@
 
 $model = "voe";
 if(filter_has_var(INPUT_GET, 'action')) {
-//	header('Content-Type: text/html');
-//	header('Content-Disposition: attachment; filename="voe.html"');
-	
+	ob_start();
 	$model = "voe-download";
 }
 
@@ -125,3 +124,14 @@ if( $query->have_posts() && $model === 'voe') {
 }
 
 get_footer($model);
+
+if(filter_has_var(INPUT_GET, 'action')) {
+	$output = ob_get_clean();
+	$css = file_get_contents('voe.css', true);
+
+	header('Content-Type: text/html');
+	header('Content-Disposition: attachment; filename="voe.html"');
+
+	$emogrifier = new \Pelago\Emogrifier($output, $css);
+	echo $emogrifier->emogrify();
+}
