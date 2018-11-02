@@ -8,6 +8,6 @@
         }
     ],
     "require": {
-        "dompdf/dompdf": "v0.8.0"
+        "pelago/emogrifier": "^2.0"
     }
 }
