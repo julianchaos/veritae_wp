@@ -1,162 +1,177 @@
 /** Header */
 #main {
-    color: #174F81;
-    font-family: "Calibri",sans-serif;
-    margin: 0 auto;
-    width: 70%;
+	color: #174F81;
+	font-family: "Calibri",sans-serif;
+	margin: 0 auto;
+	width: 90%;
 
-    a {
-        color: #174F81;
-        text-decoration: none;
-    }
+	a {
+		color: #174F81;
+		text-decoration: none;
+	}
 
-    /** Header */
-    header {
-        margin: 70px 0 50px;
+	/** Header */
+	header {
+		margin: 70px 0 50px;
 
-        .header-logo{
-            color: #BFBFBF;
-            font-family: "Roboto Medium";
-            font-size: 13px;
-            text-align: right;
-            
-            img {
-                height: 40px;
-                width: auto;
-            }
-        }
-        
-        .header-title {
-            margin-top: 35px;
-            text-align: center;
+		.header-logo{
+			color: #BFBFBF;
+			font-family: "Roboto Medium";
+			font-size: 13px;
+			text-align: right;
+			
+			img {
+				height: 40px;
+				width: auto;
+			}
+		}
+		
+		.header-title {
+			margin-top: 35px;
+			text-align: center;
 
-            .title {
-                font-size: 30px;
-            }
-            .title-links {
-                a {
-                    display: inline-block;
-                    font-family: "Calibri Light", sans-serif;
-                    font-size: 14.6px;
-                    padding: 0 8px;
+			.title {
+				font-size: 30px;
+			}
+			.title-links {
+				a {
+					display: inline-block;
+					font-family: "Calibri Light", sans-serif;
+					font-size: 14.6px;
+					padding: 0 8px;
 
-                    & + a {
-                        border-left: 1px solid #174F81;
-                    }
-                }
-            }
+					& + a {
+						border-left: 1px solid #174F81;
+					}
+				}
+			}
 
-        }
-    }
+		}
+	}
+
+	/** Body - content */
+	h2 {
+		background-color: #F0F3F6;
+		font-family: "Roboto Medium";
+		font-size: 22px;
+		margin: 35px 0;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	h3 {
+		border-bottom: 1px solid #174F81;
+		font-size: 18.6px;
+		font-weight: bold;
+		padding-left: 10px;
+	}
+	.voe-link {
+		display: block;
+		font-size: 17px;
+		padding-left: 30px;
+	}
+	.voe-link + a {
+		margin-top: 15px;
+	}
+
+	/** Footer */
+	footer {
+		* {
+			text-align: center;
+		}
+
+		.latim {
+			background-color: #F0F3F6;
+			font-family: serif;
+			font-size: 18px;
+			line-height: 23px;
+			margin: 25px 0;
+			padding: 15px 0;
+			text-transform: uppercase;
+		}
+
+		> .assine-agora {
+			background-color: #174F81;
+			color: #FFF;
+			font-weight: bold;
+			margin: 25px 0;
+			padding: 15px 0;
+			text-transform: uppercase;
+
+			.assine-agora {
+				font-size: 16px;
+			}
+			.orientador {
+				font-size: 27px;
+			}
+			.cinco-zero {
+				font-size: 106px;
+
+				small {
+					font-size: 32px;
+
+					span {
+						font-size: 17px;
+						text-transform: lowercase;
+					}
+				}
+			}
+			.categorias {
+				font-family: "Calibri Light", sans-serif;
+				font-size: 19px;
+			}
+		}
+
+		> .footer-links {
+			margin: 25px 0 35px;
+
+			.links a {
+				color: #BFBFBF;
+				font-size: 15px;
+				line-height: 35px;
+				text-decoration: underline;
+				text-transform: uppercase;
+			}
+			.social {
+				margin-top: 45px;
+			}
+		}
+
+		> .equipe-tecnica {
+			background-color: #F2F2F2;
+			padding: 35px 0;
+
+			.title {
+				font-size: 22px;
+				font-weight: bold;
+			}
+			.title-underline {
+				background-color: #174F81;
+				height: 1px;
+				margin: 35px auto;
+				width: 80px;
+			}
+			.equipe-tecnica-lista {
+				font-size: 15px;
+
+				strong {
+					display: inline-block;
+					padding-top: 35px;
+
+					&:first-of-type {
+						padding-top: 0;
+					}
+				}
+			}
+		}
+		> .copyright {
+			background-color: #174F81;
+			color: #FFF;
+			font-size: 15px;
+			line-height: 21px;
+		}
+	}
 }
 
 
 
-/** Body */
-#main h2 {
-    background-color: #F0F3F6;
-    font-family: "Roboto Medium";
-    font-size: 22px;
-    margin: 35px 0;
-    text-align: center;
-    text-transform: uppercase;
-}
-#main h3 {
-    border-bottom: 1px solid #174F81;
-    font-size: 18.6px;
-    font-weight: bold;
-    padding-left: 10px;
-}
-#main .voe-link {
-    display: block;
-    font-size: 17px;
-    padding-left: 30px;
-}
-#main .voe-link + a {
-    margin-top: 15px;
-}
 
-/** Footer*/
-#main footer {
-    text-align: center;
-}
-#main footer .latim {
-    background-color: #F0F3F6;
-    font-family: serif;
-    font-size: 18px;
-    line-height: 23px;
-    margin: 25px 0;
-    padding: 15px 0;
-    text-transform: uppercase;
-}
-#main footer > .assine-agora {
-    background-color: #174F81;
-    color: #FFF;
-    font-weight: bold;
-    margin: 25px 0;
-    padding: 15px 0;
-    text-transform: uppercase;
-}
-#main footer > .assine-agora .assine-agora {
-    font-size: 16px;
-}
-#main footer > .assine-agora .orientador {
-    font-size: 27px;
-}
-#main footer > .assine-agora .cinco-zero {
-    font-size: 106px;
-}
-#main footer > .assine-agora .cinco-zero small {
-    font-size: 32px;
-}
-#main footer > .assine-agora .cinco-zero small span {
-    font-size: 17px;
-    text-transform: lowercase;
-}
-#main footer > .assine-agora .categorias {
-    font-family: "Calibri Light", sans-serif;
-    font-size: 19px;
-}
-#main footer > .footer-links {
-    margin: 25px 0 35px;
-}
-#main footer > .footer-links .links a {
-    color: #BFBFBF;
-    font-size: 15px;
-    line-height: 35px;
-    text-decoration: underline;
-    text-transform: uppercase;
-}
-#main footer > .footer-links .social {
-    margin-top: 45px;
-}
-#main footer > .equipe-tecnica {
-    background-color: #F2F2F2;
-    padding: 35px 0;
-}
-#main footer > .equipe-tecnica .title {
-    font-size: 22px;
-    font-weight: bold;
-}
-#main footer > .equipe-tecnica .title-underline {
-    background-color: #174F81;
-    height: 1px;
-    margin: 35px auto;
-    width: 80px;
-}
-#main footer > .equipe-tecnica .equipe-tecnica-lista {
-    font-size: 15px;
-}
-#main footer > .equipe-tecnica .equipe-tecnica-lista strong {
-    display: inline-block;
-    padding-top: 35px;
-}
-#main footer > .equipe-tecnica .equipe-tecnica-lista strong:first-of-type {
-    padding-top: 0;
-}
-#main footer > .copyright {
-    background-color: #174F81;
-    color: #FFF;
-    font-size: 15px;
-    line-height: 21px;
-}

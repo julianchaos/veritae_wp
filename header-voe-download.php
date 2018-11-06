@@ -23,7 +23,9 @@ Theme: Maya Reloaded
 	<div id="main">
 		<header>
 			<div class="header-logo">
-				<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/voe/veritae_logo.png" alt="Veritae" />
+				<a href="<?php echo get_site_url() ?>">
+					<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/voe/veritae_logo.png" alt="Veritae" />
+				</a>
 				<div>
 					ISSN 1981-7584 Ano XV <br />
 					Edição 2018/Dez/20
