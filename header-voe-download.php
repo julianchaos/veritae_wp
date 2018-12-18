@@ -24,11 +24,11 @@ Theme: Maya Reloaded
 		<header>
 			<div class="header-logo">
 				<a href="<?php echo get_site_url() ?>">
-					<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/voe/veritae_logo.png" alt="Veritae" />
+					<img src="http://dl.dnzdns.com/v/VXiK9aABF0417" alt="Veritae" />
 				</a>
 				<div>
 					ISSN 1981-7584 Ano XV <br />
-					Edição 2018/Dez/20
+					Edição VOE 2018/Dez/20
 				</div>
 			</div>
 			

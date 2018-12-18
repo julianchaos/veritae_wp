@@ -4,6 +4,19 @@
  * Template Name: VOE
  */
 
+$AREA_CONHECIMENTO_ORDER = array(
+	'Previdência Social' => 0,
+	'Segurança e Saúde no Trabalho' => 1,
+	'Trabalho' => 2,
+	'Correlatas' => 3,
+);
+
+function sortAreaConhecimento($a, $b) {
+	global $AREA_CONHECIMENTO_ORDER;
+
+	return ($AREA_CONHECIMENTO_ORDER[$a] < $AREA_CONHECIMENTO_ORDER[$b] ? -1 : 1);
+}
+
 $model = "voe";
 if(filter_has_var(INPUT_GET, 'action')) {
 	ob_start();
@@ -43,6 +56,11 @@ if(filter_has_var(INPUT_GET, 'after')) {
 			'inclusive' => true
 		)
 	);
+
+	$args['orderby'] = 'title';
+	$args['order']  = 'ASC';
+	$args['nopaging'] = true;
+
 	$query = new WP_Query($args);
 }
 else {
@@ -63,6 +81,10 @@ else {
 		$args['date_query']['month'] = date('m', $date);
 		$args['date_query']['year'] = date('Y', $date);
 
+		$args['orderby'] = 'title';
+		$args['order']  = 'ASC';
+		$args['nopaging'] = true;
+
 		$query->query($args);
 
 	} while (!$query->have_posts());
@@ -81,11 +103,15 @@ if($query->have_posts()) {
 		}
 
 		$area_conhecimento = wp_get_post_terms($post->ID, 'area_conhecimento');
-		$area_conhecimento_title = 'GERAL';
+		$area_conhecimento_title = 'Correlatas';
 		if(
 				is_array($area_conhecimento) && 
 				count($area_conhecimento) > 0) {
 			$area_conhecimento_title = $area_conhecimento[0]->name;
+
+			if (!array_key_exists($area_conhecimento[0]->name, $AREA_CONHECIMENTO_ORDER)) {
+				$area_conhecimento_title = 'Correlatas';
+			}
 		}
 
 		if(!array_key_exists($area_conhecimento_title, $output[$tipo_postagem])) {
@@ -96,6 +122,11 @@ if($query->have_posts()) {
 			'title' => get_the_title(),
 			'link' => get_the_permalink(),
 		);
+	}
+
+	// Order array
+	foreach($output as $key => &$value) {
+		uksort($value, 'sortAreaConhecimento');
 	}
 }
 else {
