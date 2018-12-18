@@ -26,16 +26,16 @@
 
 					<div class="social">
 						<a href="javascript: void(0)">
-							<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/voe/social_facebook.jpg" alt="" />
+							<img src="http://dl.dnzdns.com/v/5h6k73ABF0285" alt="" /><!-- Facebook -->
 						</a>
 						<a href="javascript: void(0)">
-							<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/voe/social_gplus.jpg" alt="" />
+							<img src="http://dl.dnzdns.com/v/QfBNafABF0214" alt="" /><!-- Google Plus -->
 						</a>
 						<a href="javascript: void(0)">
-							<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/voe/social_linkedin.jpg" alt="" />
+							<img src="http://dl.dnzdns.com/v/fwO604ABF0228" alt="" /><!-- LinkedIn -->
 						</a>
 						<a href="javascript: void(0)">
-							<img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/voe/social_twitter.jpg" alt="" />
+							<img src="http://dl.dnzdns.com/v/tTtM6bABF0284" alt="" /><!-- Twitter -->
 						</a>
 					</div>
 				</div>
