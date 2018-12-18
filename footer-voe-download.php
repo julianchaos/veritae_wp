@@ -42,7 +42,7 @@
 
 				<div class="equipe-tecnica">
 					<div class="title">
-						EQUIPE TÉCNICA
+						EQUIPE VERITAE
 					</div>
 
 					<div class="title-underline"></div>
@@ -50,20 +50,23 @@
 					<div class="equipe-tecnica-lista">
 						<strong>Conteúdo e Consultoria</strong><br />
 						Adenisio Pereira da Silva Junior<br />
+						Beatris Papandreu<br />
 						Sofia Kaczurowski<br />
 						Luis Eduardo Yamagata<br />
 						veritae@veritae.com.br<br />
 						consultoria@veritae.com.br<br />
-						Fones: 55 (21) 25240487 | 334714457<br />
+						Fones: 55 (21) 25240487 | 34714457<br />
 
 						<strong>Formatação e Diagramação</strong><br />
 						Cândida Duarte<br />
 						adm@veritae.com.br<br />
-						Fones: 55 (21) 25240487 | 334714457<br />
+						Fones: 55 (21) 25240487 | 34714457	<br />
 
-						<strong>Relacionamento - Assinaturas - Treinamentos</strong><br />
+						<strong>Assinaturas - Relacionamento - Treinamentos</strong><br />
+						Beatris Papandreu<br />
 						Elisabeth Campos<br />
 						Francinne Hellora<br />
+						Hélio K.Ka.Yamagata<br />
 						Kathleen Yamágatá<br />
 						veritae@veritae.com.br<br />
 						cursos@veritae.com.br<br />
@@ -72,6 +75,7 @@
 						<strong>Tecnologia e Inovação</strong><br />
 						Danilo C. França<br />
 						Frank Mattos<br />
+						Hélio K.Ka. Yamagata<br />
 						Julian Andrade<br />
 						adm@veritae.com.br<br />
 						Fones: 55 (21) 25240487 | 34714457<br />
@@ -82,6 +86,8 @@
 						Fones: 55 (21) 41415039 | 25240487 | 34714457<br />
 
 						<strong>Administrativo - Financeiro - Fiscal</strong><br />
+						Janaína T.<br />
+						Tânia Mendes<br />
 						Telles e Mello<br />
 						financeiro@veritae.com.br<br />
 						adm@veritae.com.bra<br />

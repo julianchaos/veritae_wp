@@ -28,7 +28,7 @@ Theme: Maya Reloaded
 				</a>
 				<div>
 					ISSN 1981-7584 Ano XV <br />
-					Edição 2018/Dez/20
+					Edição VOE 2018/Dez/20
 				</div>
 			</div>
 			
