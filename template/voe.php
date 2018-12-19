@@ -171,8 +171,8 @@ if(filter_has_var(INPUT_GET, 'action')) {
 	$output = ob_get_clean();
 	$css = file_get_contents('voe.css', true);
 
-	// header('Content-Type: text/html');
-	// header('Content-Disposition: attachment; filename="voe.html"');
+	header('Content-Type: text/html');
+	header('Content-Disposition: attachment; filename="voe.html"');
 
 	$emogrifier = new \Pelago\Emogrifier($output, $css);
 	echo $emogrifier->emogrify();
