@@ -3,18 +3,28 @@
 /*
  * Template Name: VOE
  */
-
-$AREA_CONHECIMENTO_ORDER = array(
+define('TIPO_POSTAGEM_ORDER', array(
+	'Lex' => 0,
+	'Jurisprudência' => 1,
+	'Artigos' => 2,
+	'Matérias' => 3,
+	'Notícias' => 4,
+	'Informações' => 5,
+	'Orientações' => 6,
+	'Edições VOE' => 7,
+));
+define('AREA_CONHECIMENTO_ORDER', array(
 	'Previdência Social' => 0,
 	'Segurança e Saúde no Trabalho' => 1,
 	'Trabalho' => 2,
 	'Correlatas' => 3,
-);
+));
 
+function sortTipoPostagem($a, $b) {
+	return (TIPO_POSTAGEM_ORDER[$a] < TIPO_POSTAGEM_ORDER[$b] ? -1 : 1);
+}
 function sortAreaConhecimento($a, $b) {
-	global $AREA_CONHECIMENTO_ORDER;
-
-	return ($AREA_CONHECIMENTO_ORDER[$a] < $AREA_CONHECIMENTO_ORDER[$b] ? -1 : 1);
+	return (AREA_CONHECIMENTO_ORDER[$a] < AREA_CONHECIMENTO_ORDER[$b] ? -1 : 1);
 }
 
 $model = "voe";
@@ -109,7 +119,7 @@ if($query->have_posts()) {
 				count($area_conhecimento) > 0) {
 			$area_conhecimento_title = $area_conhecimento[0]->name;
 
-			if (!array_key_exists($area_conhecimento[0]->name, $AREA_CONHECIMENTO_ORDER)) {
+			if (!array_key_exists($area_conhecimento[0]->name, AREA_CONHECIMENTO_ORDER)) {
 				$area_conhecimento_title = 'Correlatas';
 			}
 		}
@@ -125,6 +135,7 @@ if($query->have_posts()) {
 	}
 
 	// Order array
+	uksort($output, 'sortTipoPostagem');
 	foreach($output as $key => &$value) {
 		uksort($value, 'sortAreaConhecimento');
 	}
@@ -160,8 +171,8 @@ if(filter_has_var(INPUT_GET, 'action')) {
 	$output = ob_get_clean();
 	$css = file_get_contents('voe.css', true);
 
-	header('Content-Type: text/html');
-	header('Content-Disposition: attachment; filename="voe.html"');
+	// header('Content-Type: text/html');
+	// header('Content-Disposition: attachment; filename="voe.html"');
 
 	$emogrifier = new \Pelago\Emogrifier($output, $css);
 	echo $emogrifier->emogrify();
